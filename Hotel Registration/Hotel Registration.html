@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hotel Registration Form</title>
+        <style>
+            body{
+                font-size: 25px;
+                /* background-color: bisque; */
+                background-image: url("https://w0.peakpx.com/wallpaper/392/364/HD-wallpaper-luxury-resort-resort-beach-beautiful-magic-sunset-pool-lights-luxury.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            table{
+                background: transparent;
+                padding-bottom: 2%;
+                border: 3px solid white;
+                padding-left: 5%;
+                padding-right: 5%;
+                color: white;
+                backdrop-filter: blur(5px);
+            }
+            input{
+                border-radius: 5px;
+            }
+            b{
+                text-align: center;
+            }
+            #register{
+                font-size: 30px;
+                border-radius: 15px;
+            }
+            .Booking{
+                color: red;
+            }
+           .button{
+            background-color: red;
+            color: white;
+            border: 2px solid white;
+            display: block;
+            margin: auto;
+            margin-top: 2%;
+            padding: 2%;
+           }
+
+
+        </style>
+    </head>
+    <body>
+        <center><br>
+            <table>
+                <form>
+                <tr>
+                    <td colspan="2"><h3 class="Booking">Hotel Registration Form</h3></td>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" id="name" required</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="text" required></td>
+                </tr>
+                <tr>
+                    <td>Phone Number:</td>
+                    <td><input type="number" required></td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" required></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h3 class="Booking">Booking Conformation</h3></td>
+                </tr>
+                <tr>
+                    <td>Check-in date:</td>
+                    <td><input id="in" type="date" required></td>
+                </tr>
+                <tr>
+                    <td>Check-in time:</td>
+                    <td><input type="time" required></td>
+                </tr>
+                <tr>
+                    <td>Check-out date:</td>
+                    <td><input id="out" type="date" required></td>
+                </tr>
+                <tr>
+                    <td>Check-out time:</td>
+                    <td><input type="time" required></td>
+                </tr>
+                <tr>
+                    <td>Number of days:</td>
+                    <td><input type="number" id="days" required></td>
+                </tr>
+                <tr>
+                    <td>Room Type</td>
+                    <td><select id="room_type" onchange="calculatecost()" required>
+                        <option>Please Select</option>
+                        <option value="Single (Rs.1000)">Single (Rs.1000)</option>
+                        <option value="Double (Rs.2000)">Double (Rs.2000)</option>
+                        <option value="Queen (Rs.3000)">Queen (Rs.3000)</option>
+                        <option value="King (Rs.4000)">King (Rs.4000)</option>
+                        <option value="2-Bedroom (Rs.5000)">2-Bedroom (Rs.5000)</option>
+                        <option value="Suite (Rs.6000)">Suite (Rs.6000)</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td>No of guests</td>
+                    <td><input type="number" required></td>
+                </tr>
+                <tr>
+                    <td>Cost:</td>
+                    <td><div id="cost"></div></td>
+                </tr>
+                
+                <tr>
+                    <td colspan="2"><button id="register"  class="button" onclick="Register()">Register</button></td>
+                </tr>
+            </form>
+            </table>
+        </center>
+        <script>
+            function Register(){
+                var name=document.getElementById("name").value;
+                alert(name+" your room is allocated successfully");
+            }
+            function calculatecost(){
+                var days=document.getElementById("days").value;
+            var roomtype=document.getElementById("room_type").value;
+            var costperday=0;
+
+            switch(roomtype){
+                case "Single (Rs.1000)":costperday=1000;
+                break;
+                case "Double (Rs.2000)":costperday=2000;
+                break;
+                case "Queen (Rs.3000)":costperday=3000;
+                break;
+                case "King (Rs.4000)":costperday=4000;
+                break;
+                case "2-Bedroom (Rs.5000)":costperday=5000;
+                break;
+                case "Suite (Rs.6000)":costperday=6000;
+                break;
+                default:costperday=0;
+            }
+            var totalcost=costperday*days;
+            document.getElementById("cost").innerText="Rs."+totalcost;
+            }
+            
+
+
+            
+
+        </script>
+    </body>
+</html>
